@@ -18,10 +18,59 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: #181A1B;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292929;
+}
+
+
+.slick-slider {
+  overflow: hidden;
+}
+.slick-slider .slick-list {
+  margin: 0 -6px;
+}
+
+
+.slick-slider .slick-slide>div {
+  padding: 0 6px;
+}
+
+.slick-slider .slick-slide:nth-child(1) {
+  margin-left: -50px;
+}
+
+.title-page::before {
+  content: '';
+  width: 24px;
+  height: 100%;
+  position: absolute;
+  background: #E50000;
+  z-index: -1;
+  left: -2px;
+}
+
+@media screen and (min-width: 960px) {
+  .slick-slider .slick-slide:nth-child(1) {
+    margin-left: 0;
+  }
+
+  .comics-section .slick-slider .slick-track {
+    left: -53.6% !important;
+  }
+
+  .title-page::before {
+    width: 40px;
+  }
+
+  .flowbite-navbar-collapse ul {
+    align-items: center;
+  }
 }

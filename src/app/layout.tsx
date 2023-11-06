@@ -1,8 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Jost } from 'next/font/google'
 import './globals.css'
+import NavbarComponent from '@/components/nav'
+import Footer from '@/components/footer'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Jost({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <NavbarComponent />
+        <div className="relative">
+          {children}
+        </div>
+        <Footer />
+      </body>
     </html>
   )
 }
