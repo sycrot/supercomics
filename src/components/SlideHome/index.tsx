@@ -4,6 +4,7 @@ import React from 'react'
 import styles from './style.module.scss'
 import { Character } from '@/types/character'
 import { getCharactersOfListIds } from '@/services/marvel'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 let listCharacters = [
   '1009281',
@@ -15,12 +16,12 @@ let listCharacters = [
 export default function SlideHome() {
   const [characters, setCharacters] = React.useState<Character[]>()
 
-  React.useEffect(() => {
+  /* React.useEffect(() => {
     const handleCharacters = () => {
       getCharactersOfListIds(listCharacters, setCharacters)
     }
     handleCharacters()
-  }, [])
+  }, [])  */
 
   return (
     <div className={styles.slide}>
@@ -29,7 +30,7 @@ export default function SlideHome() {
           <form action="">
             {characters.map((item: Character, index: any) => (
               <>
-                <input type="radio" id={item.id.toString()} name="sld" checked/>
+                <input type="radio" id={item.id.toString()} name="sld" checked />
                 <label htmlFor={item.id.toString()} className='relative'>
                   <div className='w-full h-full flex justify-center items-end md:items-center absolute overflow-hidden'>
                     <div className="w-full px-6 pr-9 mb-6 md:mb-0">
@@ -45,7 +46,11 @@ export default function SlideHome() {
         </div>
         :
         <div>
-          loading
+          <SkeletonTheme baseColor="#202020" highlightColor="#444">
+            <p>
+              <Skeleton height={600} />
+            </p>
+          </SkeletonTheme>
         </div>
       }
 

@@ -11,6 +11,8 @@ import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 import React from "react"
 import Slider from "react-slick"
+import BgTitle from '@/assets/images/bg-titlepage.jpg'
+import { SkeletonHeroes, SkeletonList } from "@/components/Skeletons"
 
 let listCharacters = [
   '1009384', // Kang
@@ -88,7 +90,7 @@ export default function Characters() {
 
   return (
     <div className="">
-      <TitlePage title="Personagens" description="Todos os heróis e vilões da Marvel" />
+      <TitlePage title="Personagens" description="Todos os heróis e vilões da Marvel" image={BgTitle}/>
       <div className="container mx-auto px-3 md:px-0">
         <div className="mt-20 md:mt-28">
           {highlighted ?
@@ -109,7 +111,7 @@ export default function Characters() {
               </Slider>
             </>
             :
-            <div></div>
+            <SkeletonHeroes />
           }
         </div>
         {characters ?
@@ -140,7 +142,9 @@ export default function Characters() {
             </div>
           </div>
           :
-          <></>
+          <div className="mt-20">
+            <SkeletonList />
+          </div>
         }
 
       </div>

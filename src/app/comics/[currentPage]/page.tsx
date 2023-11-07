@@ -12,8 +12,11 @@ import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 import React from "react"
 import Slider from "react-slick"
+import BgTitle from '@/assets/images/bg-titlecomics.jpg'
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton"
+import { SkeletonComics, SkeletonList } from "@/components/Skeletons"
 
-let listEvents= [
+let listEvents = [
   '314', // Age of ultron
   '238', // Civil War
   '330', // Civil War 2
@@ -88,7 +91,7 @@ export default function Comics() {
 
   return (
     <div className="">
-      <TitlePage title="Comics" description="Todas as revistas em quadrinhos da Marvel" />
+      <TitlePage title="Comics" description="Todas as revistas em quadrinhos da Marvel" image={BgTitle} />
       <div className="container mx-auto px-3 md:px-0">
         <div className="mt-20 md:mt-28">
           {highlighted ?
@@ -106,7 +109,7 @@ export default function Comics() {
               </Slider>
             </>
             :
-            <div></div>
+            <SkeletonComics />
           }
         </div>
         {comics ?
@@ -134,7 +137,9 @@ export default function Comics() {
             </div>
           </div>
           :
-          <></>
+          <div className="mt-20">
+            <SkeletonList />
+          </div>
         }
 
       </div>

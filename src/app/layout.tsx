@@ -5,6 +5,7 @@ import NavbarComponent from '@/components/nav'
 import Footer from '@/components/footer'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const inter = Jost({ subsets: ['latin'] })
 

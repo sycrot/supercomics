@@ -12,6 +12,8 @@ import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 import React from "react"
 import Slider from "react-slick"
+import BgTitle from '@/assets/images/bg-titleevents.jpg'
+import { SkeletonComics, SkeletonList } from "@/components/Skeletons"
 
 let listEvents= [
   '314', // Age of ultron
@@ -89,7 +91,7 @@ export default function Events() {
 
   return (
     <div className="">
-      <TitlePage title="Eventos" description="Todos os eventos do universo Marvel" />
+      <TitlePage title="Eventos" description="Todos os eventos do universo Marvel" image={BgTitle}/>
       <div className="container mx-auto px-3 md:px-0">
         <div className="mt-20 md:mt-28">
           {highlighted ?
@@ -107,7 +109,7 @@ export default function Events() {
               </Slider>
             </>
             :
-            <div></div>
+            <SkeletonComics />
           }
         </div>
         {events ?
@@ -135,7 +137,10 @@ export default function Events() {
             </div>
           </div>
           :
-          <></>
+          <div className="mt-20">
+            <SkeletonList />
+          </div>
+
         }
 
       </div>

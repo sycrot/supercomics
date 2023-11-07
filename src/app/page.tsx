@@ -20,6 +20,8 @@ import Link from 'next/link';
 import SlideSection from '@/components/SlideSection';
 import SectionHero from '@/components/SectionHero';
 import { TEvent } from '@/types/event';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { SkeletonHeroes } from '@/components/Skeletons';
 
 let listCharacters = [
   '1009368', // Iron Man
@@ -129,7 +131,7 @@ export default function Home() {
               </Slider>
             </>
             :
-            <div></div>
+            <SkeletonHeroes />
           }
         </div>
 
@@ -147,7 +149,7 @@ export default function Home() {
                 </div>
                 <div className="w-5/6 ml-1 overflow-hidden relative">
                   <img src={`${comicsMarvel[comicSelected].thumbnail.path}.${comicsMarvel[comicSelected].thumbnail.extension}`} alt={comicsMarvel[comicSelected].title} className='w-full h-full object-cover scale-150 grayscale opacity-30' />
-                  <div className="absolute top-0 left-0 z-10 flex flex-col justify-center  px-6 py-12">
+                  <div className="absolute top-0 left-0 z-10 flex flex-col justify-center h-full px-6 py-12">
                     <h1 className='font-bold text-2xl'>{comicsMarvel[comicSelected].title}</h1>
                     <p className='mt-5 line-clamp-4'>{comicsMarvel[comicSelected].description}</p>
                     <Link href={`/comic/${comicsMarvel[comicSelected].id}`} className='flex items-center mt-6'>
@@ -159,7 +161,23 @@ export default function Home() {
               </div>
             </>
             :
-            <div></div>
+            <div className='px-3 overflow-hidden h-80 md:h-707'>
+              <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                <p>
+                  <Skeleton height={52} width={300} />
+                </p>
+                <div className="flex mt-5 gap-3">
+                  <div className="flex w-1/6 flex-wrap overflow-hidden">
+                    {Array(8).fill('skeleton').map((item, index) => (
+                      <Skeleton height={222} width={300} key={index} />
+                    ))}
+                  </div>
+                  <div className="w-5/6">
+                    <Skeleton height={1700} />
+                  </div>
+                </div>
+              </SkeletonTheme>
+            </div>
           }
 
         </div>
